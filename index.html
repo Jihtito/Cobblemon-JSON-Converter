@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cobblemon JSON Converter</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Helvetica, sans-serif;
+            margin: 20px;
+            background-color: #323338;
+            color: white;
+        }.subtitle {
+            font-style: italic;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 355px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3a3b40;
+            color: white;
+            outline: none;
+            overflow-y: auto;
+            resize: none;
+            font-size: 13px;
+        }
+        pre {
+            background-color: #3a3b40;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #3a3b40;
+            color: white;
+        }
+        button:hover {
+            background-color: #424348;
+        }
+    </style>
+</head>
+<body>
+    <h1>PokePaste/Showdown to Cobblemon JSON Converter</h1>
+    <p class="subtitle">Created by Jihtito.</p>
+    <textarea id="input_text" placeholder="Paste your team from PokePaste or Showdown here. Seperate each pokemon by one blank line (Showdown does this by default)."></textarea>
+    <br>
+    <button id="convert_button">Convert to JSON</button>
+    <h2>Output:</h2>
+    <pre id="output_json"></pre>
+
+    <script src="converter.js"></script>
+</body>
+</html>

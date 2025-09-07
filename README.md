@@ -1,2 +1,1 @@
-# Cobblemon-JSON-Converter
-JavaScript based webpage that can convert PokePaste/Showdown formatted teams to Cobblemon JSONs
+Welcome to the repo for my JavaScript based webpage that can convert PokePaste/Showdown formatted teams to Cobblemon JSONs.
