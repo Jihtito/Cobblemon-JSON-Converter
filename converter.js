@@ -154,29 +154,52 @@ function convertAndDisplay() {
 function downloadJSON() {
     convertAndDisplay();
 
-    // Get user to input filename
-    let filename = prompt("Enter name for file (don't include .json):");
-    if (!filename) { filename = "output"; }     // Default to "output.json" is no name is provided
+    if (current_json) {
+        // Get user to input filename
+        let filename = prompt("Enter name for file (don't include .json):");
+        if (!filename) { filename = "output"; }     // Default to "output.json" is no name is provided
 
-    // Create Blob with JSON data
-    const blob = new Blob([current_json], {type: "application/json"});
+        // Create Blob with JSON data
+        const blob = new Blob([current_json], {type: "application/json"});
 
-    // Create a temp link object
-    const url = URL.createObjectURL(blob);
-    const download_element = document.createElement("a");
-    download_element.href = url;
+        // Create a temp link object
+        const url = URL.createObjectURL(blob);
+        const download_element = document.createElement("a");
+        download_element.href = url;
 
-    // Define file name
-    download_element.download = `${filename}.json`;
+        // Define file name
+        download_element.download = `${filename}.json`;
 
-    // Trigger download and remove object
-    download_element.click();
-    URL.revokeObjectURL(url);
+        // Trigger download and remove object
+        download_element.click();
+        URL.revokeObjectURL(url);
+    } else {
+        // Show error message
+        alert("No JSON data found. Please input a team.");
+    }
 }
 
 
+function copyJSONToClipboard() {
+    convertAndDisplay();
+
+    try {
+        if (current_json) {
+            navigator.clipboard.writeText(current_json);    // Copy json data to clipboard
+            alert("Successfully copied JSON to clipboard.");
+        } else {
+            // Show error message
+            alert("No JSON data found. Please input a team.");
+        }
+    } catch (error) {
+        // Show error message
+        alert(`An error occurred copying JSON to clipboard. \nError message: '${error.message}'`);
+    }
+}
+
 document.getElementById("convert_button").addEventListener("click", convertAndDisplay);
 document.getElementById("download_button").addEventListener("click", downloadJSON);
+document.getElementById("copy_button").addEventListener("click", copyJSONToClipboard);
 
 /* TODO: Fix known issues:
 - If nickname contains " (M)" or " (F)" and gender is not provided, species will be incorrect
